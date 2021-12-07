@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -74,10 +74,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/logo.svg" class="logo" alt="logo">
       
@@ -183,6 +179,26 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/intro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/vectors.html">
+   🟦 Векторы
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/bra-ket.html">
+   🟦 Нотация Дирака
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/matrices.html">
+   🟦 Матрицы
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../linalgblock/numpy.html">
    🟦 Numpy fun
   </a>
@@ -226,6 +242,11 @@
    🟩 Квантовые гейты
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcblock/mixedstates.html">
+   🟨 Смешанные состояния
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -239,13 +260,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/progreview.html">
+   🟩 Обзор фреймворков
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/pennylane.html">
    🟩 PennyLane
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../progblock/tfq.html">
-   🟧 Cirq &amp; TFQ
+  <a class="reference internal" href="../progblock/qiskit.html">
+   🟧 Qiskit
   </a>
  </li>
 </ul>
@@ -278,6 +304,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qcalgo/grovers_algorithm.html">
    🟧 Алгоритм Гровера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcalgo/simon_algorithm.html">
+   🟧 Алгоритм Саймона
   </a>
  </li>
 </ul>
@@ -315,8 +346,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qmlkinds.html">
+   🟦 Виды QML
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../qmlkindsblock/hhl_algorithm.html">
    🟥 Алгоритм HHL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qknn.html">
+   🟥 Алгоритм QKNN
   </a>
  </li>
 </ul>
@@ -375,6 +416,11 @@
    🟩 Гибридный SVM
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qsvmblock/classic_svm.html">
+   🟧 Классический SVM
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -385,6 +431,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qnnblock/qnnintro.html">
    ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qnnblock/qnn.html">
+   🟩 Квантовые нейронные сети
   </a>
  </li>
  <li class="toctree-l1">
@@ -400,6 +451,11 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/problemsintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchembasic.html">
    🟩 Квантовая химия (Введение)
   </a>
@@ -407,6 +463,87 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchemadvancedscf.html">
    🟧 Квантовая химия (SCF)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/ising.html">
+   🟩 Модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/advising.html">
+   🟧 Продвинутая модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/copt.html">
+   🟩 Комбинаторная оптимизация
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  От проблем к обучению
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/problems2qmlintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/np2ising.html">
+   🟩 NP как модели Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/jordanwigner.html">
+   🟧 Преобразование Жордана-Вигнера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/eigenvals.html">
+   🟩 О собственных значениях
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  VQE
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqeintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqe.html">
+   🟩 Основы VQE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/tspvqe.html">
+   🟧 VQE - практика
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  D-Wave – квантовый отжиг и семплирование
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwaveintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwave.html">
+   🟩 Квантовый отжиг и семплирование
   </a>
  </li>
 </ul>
@@ -630,7 +767,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> означает комментарий, то есть произвольный текст, который не воспринимается <code class="docutils literal notranslate"><span class="pre">Python</span></code> (все <strong>до конца строки</strong> кода полностью игнорируется). Служит исключительно для создания подсказок в коде, объяснения происходящего, то есть для удобства.</p></li>
 <li><p>Числа могут быть <strong>целыми и вещественными</strong>. Разряды в целых числах для удобства визуального восприятия можно разделять нижней чертой.</p></li>
 <li><p><strong>Значение переменной может быть вычислимым</strong>, то есть являться производной от других переменных (как <span class="math notranslate nohighlight">\(E\)</span>, ведь это результат перемножения). На самом деле значение вычисляется в момент объявления переменной (при сложной формуле расчета процесс может занимать некоторое время).</p></li>
-<li><p>Операция возведения в квадрат реализуется с помощью <code class="docutils literal notranslate"><span class="pre">**</span></code>.</p></li>
+<li><p>Операция возведения в степень реализуется с помощью <code class="docutils literal notranslate"><span class="pre">**</span></code>.</p></li>
 <li><p>В качестве названия переменных можно использовать <strong>буквы и цифры</strong>, а также некоторые символы. Однако <strong>имя переменной не может начинаться с цифры</strong>.</p></li>
 <li><p>Переменные можно переопределять (и даже менять тип). Однако <strong>старое значение в этом случае будет безвозвратно утрачено</strong>. В данном примере после выполнения последней строчки нельзя установить, чему было равно <span class="math notranslate nohighlight">\(m\)</span> до того, как переменной было присвоено значение дюжины.</p></li>
 </ol>
@@ -794,7 +931,7 @@
 </div>
 </div>
 <p>В примере выше рассмотрено три способа создания текстовых переменных. Первые два не отличаются между собой с точки зрения <code class="docutils literal notranslate"><span class="pre">Python</span></code>, то есть неважно, используете ли вы одинарные кавычки <code class="docutils literal notranslate"><span class="pre">'</span></code> или двойные <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. Однако стоит понимать, что если ваша строка содержит в себе такой символ, то кавычка должна быть изменена:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>error_string = &#39;Chillin&#39; kid&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>error_string = &#39;Chillin&#39; kid&#39;
 another_error_string = &quot;И тут он мне говорит: &quot;у тебя нет ног!&quot;&quot;
 
 print(error_string)
@@ -974,7 +1111,7 @@ print(another_error_string)
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

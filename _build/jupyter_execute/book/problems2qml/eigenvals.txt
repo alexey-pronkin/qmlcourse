@@ -1,0 +1,73 @@
+import numpy as np
+from scipy import sparse
+
+np.random.seed(42)
+x = np.random.random(10000)
+np.random.seed(42)
+y = np.random.random(10000)
+px = np.where(x > 0.2)
+py = np.where(y > 0.2)
+num_elements = max([px[0].shape[0], py[0].shape[0]])
+spmat = sparse.coo_matrix(
+    (
+        (np.ones(num_elements),
+        (px[0][:num_elements], py[0][:num_elements]))
+    )
+)
+
+print(spmat.__repr__())
+
+from scipy.sparse import linalg as sl
+
+max_eigval = sl.eigs(spmat, k=1, which="LR", return_eigenvectors=False)[0]
+min_eigval = sl.eigs(spmat, k=1, which="SR", return_eigenvectors=False)[0]
+
+print(f"Min E: {min_eigval}\nMax E: {max_eigval}")
+
+max_eigval = sl.eigsh(spmat, k=1, which="LM", return_eigenvectors=False)[0]
+min_eigval = sl.eigsh(spmat, k=1, which="SM", return_eigenvectors=False)[0]
+
+print(f"Min E: {min_eigval}\nMax E: {max_eigval}")
+
+import netket as nk
+
+g = nk.graph.Hypercube(length=10, n_dim=1, pbc=True)
+hi = nk.hilbert.Spin(s=0.5, N=g.n_nodes)
+op = nk.operator.Ising(h=1.321, hilbert=hi, J=0.5, graph=g)
+
+exact = nk.exact.lanczos_ed(op)[0]
+
+sampler = nk.sampler.MetropolisLocal(hi)
+model = nk.models.Jastrow()
+optimizer = nk.optimizer.Sgd(learning_rate=0.05)
+sr = nk.optimizer.SR(diag_shift=0.01)
+vmc = nk.driver.VMC(op, optimizer, sampler, model, n_samples=1000, preconditioner=sr)
+
+logger = nk.logging.RuntimeLog()
+vmc.run(50, out=logger, show_progress=False)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(6, 4))
+plt.plot(list(range(50)), np.real(logger.data["Energy"]["Mean"]), ".-", label="VMC mean energy")
+plt.xlabel("Epoch")
+plt.ylabel("Energy")
+plt.hlines(exact, 0, 50, label="Exact solution", color="red")
+plt.legend()
+plt.show()
+
+model = nk.models.RBM()
+optimizer = nk.optimizer.Sgd(learning_rate=0.05)
+sr = nk.optimizer.SR(diag_shift=0.01)
+vmc = nk.driver.VMC(op, optimizer, sampler, model, n_samples=1000, preconditioner=sr)
+
+logger = nk.logging.RuntimeLog()
+vmc.run(50, out=logger, show_progress=False)
+
+plt.figure(figsize=(6, 4))
+plt.plot(list(range(50)), np.real(logger.data["Energy"]["Mean"]), ".-", label="VMC mean energy")
+plt.xlabel("Epoch")
+plt.ylabel("Energy")
+plt.hlines(exact, 0, 50, label="Exact solution", color="red")
+plt.legend()
+plt.show()

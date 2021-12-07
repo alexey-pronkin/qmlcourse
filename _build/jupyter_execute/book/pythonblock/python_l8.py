@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# (python_l8=)
+# (python_l8)=
 # 
 # # Функции
 # 

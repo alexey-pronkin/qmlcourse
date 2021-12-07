@@ -1,0 +1,68 @@
+import numpy as np
+qubit = np.array([1 / np.sqrt(2) + 0j, 1 / np.sqrt(2) + 0j]).reshape((2, 1))
+
+print(qubit.shape)
+
+basis_0 = np.array([1 + 0j, 0 + 0j]).reshape((2, 1))
+basis_1 = np.array([0 + 0j, 1 + 0j]).reshape((2, 1))
+
+c0 = c1 = 1 / np.sqrt(2)
+
+print(np.allclose(qubit, c0 * basis_0 + c1 * basis_1))
+
+p0 = np.conj(c0) * c0
+p1 = np.conj(c1) * c1
+
+print(np.allclose(p0, p1))
+print(np.allclose(p0 + p1, 1.0))
+
+print(np.allclose(np.conj(qubit).T @ qubit, 1.0))
+
+plus = (basis_0 + basis_1) / np.sqrt(2)
+minus = (basis_0 - basis_1) / np.sqrt(2)
+
+R = (basis_0 + 1j * basis_1) / np.sqrt(2)
+L = (basis_0 - 1j * basis_1) / np.sqrt(2)
+
+print(np.allclose(np.conj(basis_0).T @ basis_1, 0))
+
+print(np.allclose(np.conj(plus).T @ minus, 0))
+
+print(np.allclose(np.conj(R).T @ L, 0))
+
+h = 1 / np.sqrt(2) * np.array([
+    [1 + 0j, 1 + 0j],
+    [1 + 0j, 0j - 1]
+])
+
+print(np.allclose(np.conj(h).T @ h, np.eye(2)))
+
+print(np.allclose(h @ basis_0, plus))
+
+pauli_x = np.array([[0 + 0j, 1 + 0j], [1 + 0j, 0 + 0j]])
+pauli_y = np.array([[0 + 0j, 0 - 1j], [0 + 1j, 0 + 0j]])
+pauli_z = np.array([[1 + 0j, 0 + 0j], [0 + 0j, 0j - 1]])
+
+print(np.linalg.eig(pauli_z))
+
+print(np.linalg.eig(pauli_x))
+print(np.linalg.eig(pauli_y))
+
+print(plus.conj().T @ pauli_z @ plus)
+
+print(plus.conj().T @ pauli_x @ plus)
+
+super_position = h @ basis_0
+eigenvectors = np.linalg.eig(pauli_z)[1]
+
+proj_0 = eigenvectors[0].reshape((-1, 1)) @ eigenvectors[0].reshape((1, -1))
+proj_1 = eigenvectors[1].reshape((-1, 1)) @ eigenvectors[1].reshape((1, -1))
+
+p_0 = super_position.conj().T @ proj_0 @ super_position
+
+print(np.allclose(p_0, 0.5))
+
+p_1 = super_position.conj().T @ proj_1 @ super_position
+
+print(np.allclose(p_1, 0.5))
+print(np.allclose(p_0 + p_1, 1.0))

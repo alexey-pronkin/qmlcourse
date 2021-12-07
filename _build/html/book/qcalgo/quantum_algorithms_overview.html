@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Алгоритм Дойча" href="deutschs_algorithm.html" />
-    <link rel="prev" title="О блоке" href="qcalgointro.html" />
+    <link rel="prev" title="О блоке “Базовые квантовые алгоритмы”" href="qcalgointro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -74,10 +74,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/logo.svg" class="logo" alt="logo">
       
@@ -183,6 +179,26 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/intro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/vectors.html">
+   🟦 Векторы
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/bra-ket.html">
+   🟦 Нотация Дирака
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/matrices.html">
+   🟦 Матрицы
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../linalgblock/numpy.html">
    🟦 Numpy fun
   </a>
@@ -226,6 +242,11 @@
    🟩 Квантовые гейты
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcblock/mixedstates.html">
+   🟨 Смешанные состояния
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -239,13 +260,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/progreview.html">
+   🟩 Обзор фреймворков
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/pennylane.html">
    🟩 PennyLane
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../progblock/tfq.html">
-   🟧 Cirq &amp; TFQ
+  <a class="reference internal" href="../progblock/qiskit.html">
+   🟧 Qiskit
   </a>
  </li>
 </ul>
@@ -278,6 +304,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="grovers_algorithm.html">
    🟧 Алгоритм Гровера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simon_algorithm.html">
+   🟧 Алгоритм Саймона
   </a>
  </li>
 </ul>
@@ -315,8 +346,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qmlkinds.html">
+   🟦 Виды QML
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../qmlkindsblock/hhl_algorithm.html">
    🟥 Алгоритм HHL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qknn.html">
+   🟥 Алгоритм QKNN
   </a>
  </li>
 </ul>
@@ -375,6 +416,11 @@
    🟩 Гибридный SVM
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qsvmblock/classic_svm.html">
+   🟧 Классический SVM
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -385,6 +431,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qnnblock/qnnintro.html">
    ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qnnblock/qnn.html">
+   🟩 Квантовые нейронные сети
   </a>
  </li>
  <li class="toctree-l1">
@@ -400,6 +451,11 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/problemsintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchembasic.html">
    🟩 Квантовая химия (Введение)
   </a>
@@ -407,6 +463,87 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchemadvancedscf.html">
    🟧 Квантовая химия (SCF)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/ising.html">
+   🟩 Модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/advising.html">
+   🟧 Продвинутая модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/copt.html">
+   🟩 Комбинаторная оптимизация
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  От проблем к обучению
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/problems2qmlintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/np2ising.html">
+   🟩 NP как модели Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/jordanwigner.html">
+   🟧 Преобразование Жордана-Вигнера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/eigenvals.html">
+   🟩 О собственных значениях
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  VQE
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqeintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqe.html">
+   🟩 Основы VQE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/tspvqe.html">
+   🟧 VQE - практика
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  D-Wave – квантовый отжиг и семплирование
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwaveintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwave.html">
+   🟩 Квантовый отжиг и семплирование
   </a>
  </li>
 </ul>
@@ -475,10 +612,7 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../../_sources/book/qcalgo/quantum_algorithms_overview.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../../_sources/book/qcalgo/quantum_algorithms_overview.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -515,23 +649,6 @@
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/SemyonSinchenko/qmlcourse/master?urlpath=tree/qmlcourseRU/book/qcalgo/quantum_algorithms_overview.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
         </div>
 
@@ -589,7 +706,7 @@
 <p>Если дать возможность классическому компьютеру решать задачи с привнесением случайности, так что компьютер получает правильный ответ с высокой вероятностью (стандартно берут порог не менее <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>, хотя достаточно, чтобы вероятность была константой больше 0.5), то можно говорить о классе задач <span class="math notranslate nohighlight">\(BPP\)</span> (сокращение от англ. bounded-error, probabilistic, polynomial). Такие задачи получается решить за полиномиальное время, причем точность решения можно сколько угодно увеличивать, повторно запуская алгоритм. Квантовый аналог таких задач – класс <span class="math notranslate nohighlight">\(BQP\)</span> (от англ. bounded error quantum polynomial time). Это задачи, которые получается решить на квантовом компьютере за полиномиальное время, обеспечивая точность решения повторным запуском алгоритма. Наиболее известный пример такой задачи – факторизация чисел, решаемая на квантовом компьютере с помощью алгоритма Шора.</p>
 <div class="figure align-default" id="problem-classes">
 <a class="reference internal image-reference" href="../../_images/problem_classes.png"><img alt="../../_images/problem_classes.png" src="../../_images/problem_classes.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Классы задач по временной сложности</span><a class="headerlink" href="#problem-classes" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Классы задач по временной сложности</span><a class="headerlink" href="#problem-classes" title="Permalink to this image">¶</a></p>
 </div>
 <p>На данный момент можно говорить о том, что класс <span class="math notranslate nohighlight">\(BQP\)</span> включает в себя в том числе и задачи, для которых неизвестно полиномиальное классическое решение, что позволяет относиться к квантовым вычислениям с оптимизмом.</p>
 </div>
@@ -608,9 +725,9 @@
 <h2>Алгоритмы в нашем курсе<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Для более глубокого погружения в детали этих квантовых алгоритмов у нас в курсе есть отдельные лекции по:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="deutschs_algorithm.html#deutschs-algorithm"><span class="std std-ref">Алгоритм Дойча (начальный уровень)</span></a></p></li>
-<li><p><a class="reference internal" href="quantum_teleportation.html#quantum-teleportation"><span class="std std-ref">Квантовая телепортация (начальный уровень) на Qiskit</span></a></p></li>
-<li><p><a class="reference internal" href="grovers_algorithm.html#grovers-algorithm"><span class="std std-ref">Алгоритм Гровера (продвинутый уровень)</span></a></p></li>
+<li><p><a class="reference internal" href="deutschs_algorithm.html"><span class="doc std std-doc">Алгоритм Дойча (начальный уровень)</span></a></p></li>
+<li><p><a class="reference internal" href="quantum_teleportation.html"><span class="doc std std-doc">Квантовая телепортация (начальный уровень) на Qiskit</span></a></p></li>
+<li><p><a class="reference internal" href="grovers_algorithm.html"><span class="doc std std-doc">Алгоритм Гровера (продвинутый уровень)</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -649,7 +766,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">О блоке</p>
+                <p class="prevnext-title">О блоке “Базовые квантовые алгоритмы”</p>
             </div>
         </a>
     </div>
@@ -667,7 +784,7 @@
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

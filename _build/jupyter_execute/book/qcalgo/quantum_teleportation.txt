@@ -1,0 +1,29 @@
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+
+# создаем необходимые регистры
+qr = QuantumRegister(3, name="q")
+crz = ClassicalRegister(1, name="crz")
+crx = ClassicalRegister(1, name="crx")
+
+# создаем схему
+qc = QuantumCircuit(qr, crz, crx)
+
+# Шаг 1
+qc.h(qr[1])
+# Шаг 2
+qc.cx(qr[1], qr[2])
+
+# Шаг 3
+qc.cx(qr[0], qr[1])
+# Шаг 4
+qc.h(qr[0])
+
+# Шаг 5 - измеряются 2 кубита Алисы, чтобы передать результат Бобу
+qc.measure(qr[0], crz)
+qc.measure(qr[1], crx)
+
+# Шаг 6 - применяются гейт X и гейт Z в завиимости от того, какое из измерений дает результат 1.
+qc.x(qr[2]).c_if(crx, 1)
+qc.z(qr[2]).c_if(crz, 1)
+
+qc.draw()

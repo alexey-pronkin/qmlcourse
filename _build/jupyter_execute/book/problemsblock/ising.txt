@@ -1,0 +1,54 @@
+import numpy as np
+from scipy import sparse
+from scipy.sparse import linalg as sl
+
+def sigmaz_k(k: int, n: int) -> (sparse.csr_matrix):
+    left_part = sparse.eye(2 ** k)
+    right_part = sparse.eye(2 ** (n - 1 - k))
+
+    return sparse.kron(
+        sparse.kron(
+            left_part,
+            sparse.csr_matrix(np.array([[1, 0,], [0, -1,],]))
+        ),
+        right_part
+    )
+
+def ising(j: float, h: float, n: int) -> (sparse.csr_matrix):
+    res = sparse.csr_matrix((2 ** n, 2 ** n), dtype=np.complex64)
+
+    for i in range(n - 1):
+        res += j * sigmaz_k(i, n) * sigmaz_k(i + 1, n)
+        res -= h * sigmaz_k(i, n)
+
+    res -= h * sigmaz_k(n - 1, n)
+
+    return res
+
+op = ising(1, 0, 10)
+solution = sl.eigs(op, which="SR", k=1, return_eigenvectors=True)
+print(f"Energy: {solution[0][0]}")
+
+def probs2bit_str(probs: np.array) -> (str):
+    size = int(np.log2(probs.shape[0]))
+    bit_s_num = np.where(probs == probs.max())[0][0]
+
+    s = f"{bit_s_num:b}"
+    s = "0" * (size - len(s)) + s
+
+    return s
+
+probs = solution[1] * solution[1].conj()
+print(probs2bit_str(probs))
+
+def external_field(j: float, h: float, n: int) -> (None):
+    op = ising(j, h, n)
+    solution = sl.eigs(op, which="SR", k=1, return_eigenvectors=True)
+    print(f"Energy: {solution[0][0]}")
+
+    probs = solution[1] * solution[1].conj()
+    print(probs2bit_str(probs))
+
+external_field(1, 2, 10)
+
+external_field(1, 100, 10)

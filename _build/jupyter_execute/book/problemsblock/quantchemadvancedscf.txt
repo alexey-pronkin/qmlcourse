@@ -1,4 +1,5 @@
 import psi4
+psi4.core.be_quiet() # отключаем логирование в stdout
 
 h_atom = psi4.geometry("H")
 
@@ -14,8 +15,19 @@ h2ev = physical_constants['hartree-electron volt relationship']
 def e_in_ev(energy_in_ht):
     return energy_in_ht * h2ev[0]
 
-e_in_ht = psi4.energy('scf') # энергия в единицах Hartree
+# энергия в единицах Hartree
+e_in_ht = psi4.energy('scf')
+
 print(f"Hydrogen ground state energy: {e_in_ev(e_in_ht)} eV")
+
+e_in_ht = psi4.energy('scf')
+
+psi4.set_options(
+  {
+    'basis': 'STO-3G',
+    'reference': 'rohf',
+  }
+)
 
 psi4.core.clean()
 
@@ -24,10 +36,11 @@ h_atom = psi4.geometry("H")
 psi4.set_options({
   'basis': 'd-aug-cc-pv5z', # разбор этого базиса выходит за рамки этого интро
   'scf_type': 'pk',
-  'reference': 'rohf'
+  'reference': 'rohf',
 })
 
 e_in_ht = psi4.energy('scf')
+
 print(f"Better hydrogen ground state energy: {e_in_ev(e_in_ht)} eV")
 
 psi4.core.clean()
@@ -40,14 +53,16 @@ psi4.set_options({
 })
 
 e_in_ht = psi4.energy('scf')
+
 print(f"Helium ground state energy: {e_in_ev(e_in_ht)} eV")
 
 psi4.core.clean()
 
+# задаем 2 атома водорода с явными координатами
 h_mol = psi4.geometry("""
 H 0 0 0
 H 0 0 0.74
-""") # задали 2 атома водорода с явными координатами
+""")
 
 psi4.set_options({
   'basis': 'STO-3G',
@@ -55,6 +70,7 @@ psi4.set_options({
 })
 
 e_in_ht_h = psi4.energy('scf', molecule=h_mol)
+
 print(f"Hydrogen ground state energy: {e_in_ev(e_in_ht_h)} eV")
 
 psi4.core.clean()
@@ -62,8 +78,8 @@ psi4.core.clean()
 h_mol_bad = psi4.geometry("""
 H 0 0 0
 H 0 0 1.5
-""") # неверное расстояние в ангстремах
-
+""")
+# 1.5 - неверное расстояние в ангстремах, верное - 0.74
 
 psi4.set_options({
   'basis': 'STO-3G',
@@ -79,7 +95,6 @@ e_in_ht_h_optimized = psi4.optimize('scf', molecule=h_mol_bad)
 print(f"Hydrogen molecule, incorrect ground state energy: {e_in_ev(e_in_ht_h_bad)} eV")
 print(f"Hydrogen molecule, optimized ground state energy: {e_in_ev(e_in_ht_h_optimized)} eV")
 
-
 psi4.core.clean()
 
 eth = psi4.geometry("pubchem:ethanol")
@@ -92,4 +107,3 @@ psi4.set_options({
 e_in_ht_eth = psi4.energy('scf', molecule=eth)
 
 print(f"Ethanol ground state energy: {e_in_ev(e_in_ht_eth)} eV")
-

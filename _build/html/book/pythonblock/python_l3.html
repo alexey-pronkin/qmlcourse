@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -72,10 +72,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/logo.svg" class="logo" alt="logo">
       
@@ -181,6 +177,26 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/intro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/vectors.html">
+   🟦 Векторы
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/bra-ket.html">
+   🟦 Нотация Дирака
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/matrices.html">
+   🟦 Матрицы
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../linalgblock/numpy.html">
    🟦 Numpy fun
   </a>
@@ -224,6 +240,11 @@
    🟩 Квантовые гейты
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcblock/mixedstates.html">
+   🟨 Смешанные состояния
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -237,13 +258,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/progreview.html">
+   🟩 Обзор фреймворков
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/pennylane.html">
    🟩 PennyLane
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../progblock/tfq.html">
-   🟧 Cirq &amp; TFQ
+  <a class="reference internal" href="../progblock/qiskit.html">
+   🟧 Qiskit
   </a>
  </li>
 </ul>
@@ -276,6 +302,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qcalgo/grovers_algorithm.html">
    🟧 Алгоритм Гровера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcalgo/simon_algorithm.html">
+   🟧 Алгоритм Саймона
   </a>
  </li>
 </ul>
@@ -313,8 +344,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qmlkinds.html">
+   🟦 Виды QML
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../qmlkindsblock/hhl_algorithm.html">
    🟥 Алгоритм HHL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qknn.html">
+   🟥 Алгоритм QKNN
   </a>
  </li>
 </ul>
@@ -373,6 +414,11 @@
    🟩 Гибридный SVM
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qsvmblock/classic_svm.html">
+   🟧 Классический SVM
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -383,6 +429,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qnnblock/qnnintro.html">
    ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qnnblock/qnn.html">
+   🟩 Квантовые нейронные сети
   </a>
  </li>
  <li class="toctree-l1">
@@ -398,6 +449,11 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/problemsintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchembasic.html">
    🟩 Квантовая химия (Введение)
   </a>
@@ -405,6 +461,87 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchemadvancedscf.html">
    🟧 Квантовая химия (SCF)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/ising.html">
+   🟩 Модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/advising.html">
+   🟧 Продвинутая модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/copt.html">
+   🟩 Комбинаторная оптимизация
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  От проблем к обучению
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/problems2qmlintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/np2ising.html">
+   🟩 NP как модели Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/jordanwigner.html">
+   🟧 Преобразование Жордана-Вигнера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/eigenvals.html">
+   🟩 О собственных значениях
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  VQE
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqeintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqe.html">
+   🟩 Основы VQE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/tspvqe.html">
+   🟧 VQE - практика
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  D-Wave – квантовый отжиг и семплирование
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwaveintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwave.html">
+   🟩 Квантовый отжиг и семплирование
   </a>
  </li>
 </ul>
@@ -701,7 +838,7 @@
 <p>Про кнопку <code class="docutils literal notranslate"><span class="pre">Run</span></code> (и хоткей <code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>) мы уже поговорили, а что с остальными?</p>
 <div class="figure align-default" id="jupyter-ui-8">
 <a class="reference internal image-reference" href="../../_images/jupyter_ui_8.png"><img alt="../../_images/jupyter_ui_8.png" src="../../_images/jupyter_ui_8.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Кнопки управления <strong>ЯДРОМ</strong> ноутбуком.</span><a class="headerlink" href="#jupyter-ui-8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Кнопки управления <strong>ЯДРОМ</strong> ноутбука.</span><a class="headerlink" href="#jupyter-ui-8" title="Permalink to this image">¶</a></p>
 </div>
 <p>Для того, чтобы вы могли запускать код <code class="docutils literal notranslate"><span class="pre">Python</span></code>, запускается так называемое <strong>“ядро” (или kernel)</strong>, то есть приложение, которое непосредственно выполняет (запускает) ваш код и передает результаты обратно в <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>-ноутбук. За это отвечает как раз <code class="docutils literal notranslate"><span class="pre">Run</span></code>.</p>
 <p>Справа от нее расположен <code class="docutils literal notranslate"><span class="pre">Stop</span></code>, который <strong>прерывает выполнение программы</strong>. Он может быть полезен в случаях, когда вы запустили расчеты на час, но заметили ошибку – и поэтому нужно и код переписать, и ячейку с кодом снова запустить. И в этой ситуации вы сначала <strong>останавливаете</strong> выполнение, редактируете код, затем жмете <code class="docutils literal notranslate"><span class="pre">Run</span></code> – и все готово!</p>
@@ -722,7 +859,7 @@
 </div>
 <p>В первом случае в квадратных скобках <strong>ничего нет</strong> – это значит, что <strong>ячейка еще не была запущена</strong>. Возможно, вы забыли, а быть может, она просто ждет своего часа.</p>
 <p>Во втором случае <strong>ячейка была запущена</strong> шестой по счету (да-да, <strong>ячейки выполняются по порядку, который задаете вы сами</strong>!) и она <strong>успешно отработала и завершилась</strong>.</p>
-<p>В последней строчке умышленно был сделан бесконечный цикл. Это означает, что <em>код никогда не сможет выполниться</em> и будет висеть до тех пор, пока вы не остановите (<code class="docutils literal notranslate"><span class="pre">Stop</span></code>ните) ядро. Поэтому там выведен <strong>индикатор выполнения ячейки</strong> – в скобках указана звездочка <code class="docutils literal notranslate"><span class="pre">*</span></code>. Обратите внимание: <strong>это не всегда плохой сигнал</strong>. Если ваш код должен выполняться 2-3 минуты, то все это время будет выводиться <code class="docutils literal notranslate"><span class="pre">[*]</span></code>. Когда код отработает и результат будет получен, отрисуется цифра (например, <code class="docutils literal notranslate"><span class="pre">[7]</span></code> ).</p>
+<p>В последней строчке умышленно был сделан бесконечный цикл. Это означает, что <em>код никогда не сможет выполниться</em> и будет висеть до тех пор, пока вы не остановите (<code class="docutils literal notranslate"><span class="pre">Stop</span></code>нете) ядро. Поэтому там выведен <strong>индикатор выполнения ячейки</strong> – в скобках указана звездочка <code class="docutils literal notranslate"><span class="pre">*</span></code>. Обратите внимание: <strong>это не всегда плохой сигнал</strong>. Если ваш код должен выполняться 2-3 минуты, то все это время будет выводиться <code class="docutils literal notranslate"><span class="pre">[*]</span></code>. Когда код отработает и результат будет получен, отрисуется цифра (например, <code class="docutils literal notranslate"><span class="pre">[7]</span></code> ).</p>
 </div>
 <div class="section" id="id6">
 <h2>Самая полезная клавиша<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
@@ -829,7 +966,7 @@
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

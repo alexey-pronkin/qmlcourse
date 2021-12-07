@@ -1,0 +1,73 @@
+import pennylane as qml
+
+dev = qml.device("default.qubit", 1)
+
+@qml.qnode(dev)
+def simple_x_gate():
+    qml.PauliX(0)
+    return qml.expval(qml.PauliZ(0))
+
+
+print(f"{simple_x_gate() = }")
+print(simple_x_gate.draw())
+
+@qml.qnode(dev)
+def vqc(phi):
+    qml.RX(phi, wires=[0])
+    return qml.expval(qml.PauliZ(0))
+
+for i in [1.0, 2.0, 3.0, 3.14159265359]:
+  print(f"Try {i}: {vqc(i)}")  
+
+@qml.qnode(dev)
+def angle_vqc(a, b):
+    qml.RY(a, wires=[0])
+    qml.RZ(b, wires=[0])
+
+    return qml.expval(qml.PauliZ(0))
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+aa = np.random.uniform(0, 2 * np.pi, size=500)
+bb = np.random.uniform(0, 2 * np.pi, size=500)
+
+res = [angle_vqc(a, b) for a, b in zip(aa, bb)]
+
+f = plt.figure(figsize=(8, 7))
+clb = plt.scatter(aa, bb, c=res)
+plt.xlabel("a")
+plt.ylabel("b")
+plt.colorbar(clb)
+
+f.show()
+
+@qml.qnode(dev)
+def angle_vqc_pl(a, b):
+    qml.templates.embeddings.AngleEmbedding([a], wires=[0], rotation="Y")
+    qml.templates.embeddings.AngleEmbedding([b], wires=[0], rotation="Z")
+    return qml.expval(qml.PauliZ(0))
+
+res_pl = [angle_vqc_pl(a, b) for a, b in zip(aa, bb)]
+print(np.allclose(res, res_pl))
+
+dev2 = qml.device("default.qubit", 2)
+
+@qml.qnode(dev2)
+def cnot_vqc(a, b):
+    qml.RY(a, wires=0)
+    qml.RY(b, wires=1)
+    qml.RZ(a, wires=0)
+    qml.RZ(b, wires=1)
+    qml.CZ(wires=[0, 1])
+    return qml.expval(qml.PauliZ(0) @ qml.PauliZ(1))
+
+res = [cnot_vqc(a, b) for a, b in zip(aa, bb)]
+
+f = plt.figure(figsize=(8, 7))
+clb = plt.scatter(aa, bb, c=res)
+plt.xlabel("a")
+plt.ylabel("b")
+plt.colorbar(clb)
+
+plt.show()

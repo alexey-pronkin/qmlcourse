@@ -1,15 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 (quantum_algorithms_overview)=
 
 # Обзор квантовых алгоритмов
@@ -57,6 +45,6 @@ kernelspec:
 
 Для более глубокого погружения в детали этих квантовых алгоритмов у нас в курсе есть отдельные лекции по:
 
-- [Алгоритм Дойча (начальный уровень)](deutschs_algorithm)
-- [Квантовая телепортация (начальный уровень) на Qiskit](quantum_teleportation)
-- [Алгоритм Гровера (продвинутый уровень)](grovers_algorithm)
+- [Алгоритм Дойча (начальный уровень)](./deutschs_algorithm)
+- [Квантовая телепортация (начальный уровень) на Qiskit](./quantum_teleportation)
+- [Алгоритм Гровера (продвинутый уровень)](./grovers_algorithm)

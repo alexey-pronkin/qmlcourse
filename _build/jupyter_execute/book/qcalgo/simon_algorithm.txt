@@ -1,0 +1,30 @@
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+
+# Работаем в пространстве размерности n = 3.
+n = 3
+
+# Создаём необходимые регистры
+qr1 = QuantumRegister(n, name="q1")
+qr2 = QuantumRegister(n, name="q2")
+cr1 = ClassicalRegister(n, name="c1")
+
+# Шаг 1. Создаём квантовую схему (инициализация состояния)
+qc = QuantumCircuit(qr1, qr2, cr1)
+
+# Шаг 2. Применяем гейт Адамара ко всем кубитам первого регистра
+qc.h(range(n))
+
+# Шаг 3. Применяем U_f
+qc.cx(qr1[0], qr2[0])
+
+# Шаг 4. Производим измерение первого регистра
+qc.measure(qr2, cr1)
+
+# Шаг 5. Ещё раз применяем гейт адамара к каждому из кубитов
+qc.h(range(n))
+
+# Шаг 6. Производим измерение первого регистра
+qc.measure(qr1, cr1)
+
+# Рисуем схему
+qc.draw()

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>О блоке &#8212; QMLCourse</title>
+    <title>О блоке “Железо квантовых компьютеров” &#8212; QMLCourse</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Обзор и классификация физических платформ для квантовых вычислений" href="hwreview.html" />
-    <link rel="prev" title="Алгоритм Гровера" href="../qcalgo/grovers_algorithm.html" />
+    <link rel="prev" title="Алгоритм Саймона" href="../qcalgo/simon_algorithm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -74,10 +74,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/logo.svg" class="logo" alt="logo">
       
@@ -183,6 +179,26 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/intro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/vectors.html">
+   🟦 Векторы
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/bra-ket.html">
+   🟦 Нотация Дирака
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../linalgblock/matrices.html">
+   🟦 Матрицы
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../linalgblock/numpy.html">
    🟦 Numpy fun
   </a>
@@ -226,6 +242,11 @@
    🟩 Квантовые гейты
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcblock/mixedstates.html">
+   🟨 Смешанные состояния
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -239,13 +260,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/progreview.html">
+   🟩 Обзор фреймворков
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/pennylane.html">
    🟩 PennyLane
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../progblock/tfq.html">
-   🟧 Cirq &amp; TFQ
+  <a class="reference internal" href="../progblock/qiskit.html">
+   🟧 Qiskit
   </a>
  </li>
 </ul>
@@ -278,6 +304,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qcalgo/grovers_algorithm.html">
    🟧 Алгоритм Гровера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcalgo/simon_algorithm.html">
+   🟧 Алгоритм Саймона
   </a>
  </li>
 </ul>
@@ -315,8 +346,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qmlkinds.html">
+   🟦 Виды QML
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../qmlkindsblock/hhl_algorithm.html">
    🟥 Алгоритм HHL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qknn.html">
+   🟥 Алгоритм QKNN
   </a>
  </li>
 </ul>
@@ -375,6 +416,11 @@
    🟩 Гибридный SVM
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qsvmblock/classic_svm.html">
+   🟧 Классический SVM
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -385,6 +431,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qnnblock/qnnintro.html">
    ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qnnblock/qnn.html">
+   🟩 Квантовые нейронные сети
   </a>
  </li>
  <li class="toctree-l1">
@@ -400,6 +451,11 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/problemsintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchembasic.html">
    🟩 Квантовая химия (Введение)
   </a>
@@ -407,6 +463,87 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchemadvancedscf.html">
    🟧 Квантовая химия (SCF)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/ising.html">
+   🟩 Модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/advising.html">
+   🟧 Продвинутая модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/copt.html">
+   🟩 Комбинаторная оптимизация
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  От проблем к обучению
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/problems2qmlintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/np2ising.html">
+   🟩 NP как модели Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/jordanwigner.html">
+   🟧 Преобразование Жордана-Вигнера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/eigenvals.html">
+   🟩 О собственных значениях
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  VQE
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqeintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqe.html">
+   🟩 Основы VQE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/tspvqe.html">
+   🟧 VQE - практика
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  D-Wave – квантовый отжиг и семплирование
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwaveintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwave.html">
+   🟩 Квантовый отжиг и семплирование
   </a>
  </li>
 </ul>
@@ -527,20 +664,9 @@
               <div>
                 
   <div class="section" id="hwintro">
-<span id="id1"></span><h1>О блоке<a class="headerlink" href="#hwintro" title="Permalink to this headline">¶</a></h1>
-<p>Этот блок включает в себя обзор различных подходов к физической реализации квантовых вычислений. Как и классические
-компьютеры, квантовые компьютеры вовсе не обязаны быть основаны на какой-то одном физическом принципе работы: информация
-может храниться в токах и напряжениях в электрической схеме, спинах атомов, механическом положении или движении
-микроскопических частиц. Квантовая механика проявляется для любых достаточно малых систем. В качестве критерия малости
-можно использовать постоянную Планка <span class="math notranslate nohighlight">\(\hbar\)</span>, которая имеет размерность фазового объема, или произведения координаты на
-импульс; это отражается и в принципе неопределенность Гейзенберга. Это значит, что если мы имеем систему, работающей на
-частоте <span class="math notranslate nohighlight">\(\omega\)</span>, разность энергий уровней, в которых хранится информация, скорее всего будет порядка <span class="math notranslate nohighlight">\(\hbar \omega\)</span>.
-Из-за того, что <span class="math notranslate nohighlight">\(\hbar\sim 1.054\times 10^{-34}~\mathrm{J}\cdot\mathrm{s}\)</span> – очень маленькое число, два квантовых
-состояния очень слабо отличаются друг от друга.</p>
-<p>Из-за того, что все платформы для квантовых вычислений очень разные, делать конкретные утверждения про все сразу
-практически невозможно.
-В этом блоке будет дана обзорная классификация разных платформ по разным признакам со ссылками на оригинальные работы,
-а затем более подробная лекция про сверхпроводниковые кубиты.</p>
+<span id="id1"></span><h1>О блоке “Железо квантовых компьютеров”<a class="headerlink" href="#hwintro" title="Permalink to this headline">¶</a></h1>
+<p>Этот блок включает в себя обзор различных подходов к физической реализации квантовых вычислений. Как и классические компьютеры, квантовые компьютеры вовсе не обязаны быть основаны на какой-то одном физическом принципе работы: информация может храниться в токах и напряжениях в электрической схеме, спинах атомов, механическом положении или движении микроскопических частиц. Квантовая механика проявляется для любых достаточно малых систем. В качестве критерия малости можно использовать постоянную Планка <span class="math notranslate nohighlight">\(\hbar\)</span>, которая имеет размерность фазового объема, или произведения координаты на импульс; это отражается и в принципе неопределенность Гейзенберга. Это значит, что если мы имеем систему, работающей на частоте <span class="math notranslate nohighlight">\(\omega\)</span>, разность энергий уровней, в которых хранится информация, скорее всего будет порядка <span class="math notranslate nohighlight">\(\hbar \omega\)</span>. Из-за того, что <span class="math notranslate nohighlight">\(\hbar\sim 1.054\times 10^{-34}~\mathrm{J}\cdot\mathrm{s}\)</span> – очень маленькое число, два квантовых состояния очень слабо отличаются друг от друга.</p>
+<p>Из-за того, что все платформы для квантовых вычислений очень разные, делать конкретные утверждения про все сразу практически невозможно. В этом блоке будет дана обзорная классификация разных платформ по разным признакам со ссылками на оригинальные работы, а затем более подробная лекция про сверхпроводниковые кубиты.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -573,11 +699,11 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../qcalgo/grovers_algorithm.html" title="previous page">
+        <a class="left-prev" href="../qcalgo/simon_algorithm.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Алгоритм Гровера</p>
+                <p class="prevnext-title">Алгоритм Саймона</p>
             </div>
         </a>
     </div>
@@ -595,7 +721,7 @@
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

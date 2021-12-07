@@ -1,0 +1,96 @@
+import numpy as np
+
+def ry(state, phi):
+    return np.array([
+        [np.cos(phi / 2), -np.sin(phi / 2)],
+        [np.sin(phi / 2),  np.cos(phi / 2)]
+    ]) @ state
+
+basis = np.array([1 + 0j, 0 + 0j]).reshape((2, 1))
+
+def expval(state, op):
+    return state.conj().T @ op @ state
+
+pauli_x = np.array([[0 + 0j, 1 + 0j], [1 + 0j, 0 + 0j]])
+
+print(np.allclose(expval(ry(basis, np.pi / 2), pauli_x), 1.0))
+print(np.allclose(expval(ry(basis, -np.pi / 2), pauli_x), -1.0))
+
+random_state = np.array([0.42 + 0j, np.sqrt(1 - 0.42**2) + 0j]).reshape((2, 1))
+
+pauli_z = np.array([[1 + 0j, 0 + 0j], [0 + 0j, 0j - 1]])
+
+print("Z:\n\t" + str(expval(random_state, pauli_z)) + "\n")
+print("X:\n\t" + str(expval(random_state, pauli_x)) + "\n")
+
+print("Z after RY:\n\t" + str(expval(ry(random_state, 2 * np.pi), pauli_z)) + "\n")
+print("X after RY:\n\t" + str(expval(ry(random_state, 2 * np.pi), pauli_x)) + "\n")
+
+def u1(state, phi):
+    return np.array([[1, 0], [0, np.exp(1j * phi)]]) @ state
+
+def rz(state, phi):
+    return np.array([[np.exp(-1j * phi / 2), 0], [0, np.exp(1j * phi / 2)]]) @ state
+
+
+def u2_direct(phi, l):
+    return (
+        1
+        / np.sqrt(2)
+        * np.array([[1, -np.exp(1j * l)], [np.exp(1j * phi), np.exp(1j * (phi + l))]])
+    )
+
+
+def u2_inferenced(phi, l):
+    return (
+        u1(np.eye(2), phi + l)
+        @ rz(np.eye(2), -l)
+        @ ry(np.eye(2), np.pi / 2)
+        @ rz(np.eye(2), l)
+    )
+
+print(np.allclose(u2_direct(np.pi / 6, np.pi / 3), u2_inferenced(np.pi / 6, np.pi / 3)))
+
+print(np.allclose(u1(basis, np.pi / 6), basis))
+
+h = 1 / np.sqrt(2) * np.array([[1 + 0j, 1 + 0j], [1 + 0j, 0j - 1]])
+print(np.allclose(u1(h @ basis, np.pi / 6), h @ basis))
+
+identity_gate = np.eye(2, dtype=np.complex128)
+print(identity_gate)
+
+print(np.allclose(np.kron(h @ basis, basis), np.kron(h, identity_gate) @ np.kron(basis, basis)))
+
+print(np.kron(basis, basis).conj().T @ np.kron(pauli_z, pauli_z) @ np.kron(basis, basis))
+
+cnot = (1 + 0j) * np.array(
+    [
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+        [0, 0, 1, 0],
+    ]
+)
+
+print(np.allclose(cnot @ np.kron(basis, basis), np.kron(basis, basis)))
+print(np.allclose(
+    cnot @ np.kron(pauli_x @ basis, basis), np.kron(pauli_x @ basis, pauli_x @ basis)
+))
+
+import pennylane as qml
+
+device = qml.device("default.qubit", 2)
+
+state = np.kron(basis, basis)
+op = np.kron(ry(np.eye(2), np.deg2rad(45)), np.eye(2, dtype=np.complex128))
+measure = np.kron(pauli_z, pauli_z)
+
+print((op @ state).conj().T @ measure @ (op @ state))
+
+@qml.qnode(device)
+def test(angle):
+    qml.RY(angle, wires=0)
+    return qml.expval(qml.PauliZ(0) @ qml.PauliZ(1))
+
+
+print(test(np.deg2rad(45)))

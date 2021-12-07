@@ -1,0 +1,46 @@
+import pennylane as qml
+from pennylane import numpy as np
+
+dev = qml.device("default.qubit", shots=1, wires=2)
+
+def f1():
+    pass
+
+def f2():
+    qml.PauliX(wires=[1])
+
+def f3():
+    qml.CNOT(wires=[0, 1])
+
+def f4():
+    qml.PauliX(wires=0)
+    qml.CNOT(wires=[0, 1])
+    qml.PauliX(wires=0)
+
+black_boxes_dict = {"f1": f1, "f2": f2, "f3": f3, "f4": f4}
+
+def random_black_box(black_boxes_dict):
+    black_boxes_dict_list_keys = list(black_boxes_dict.keys())
+    n = np.random.randint(0, len(black_boxes_dict_list_keys))
+
+    return black_boxes_dict_list_keys[n]
+
+@qml.qnode(dev, interface=None)
+def circuit(black_box_name):
+    qml.Hadamard(wires=0)
+    qml.PauliX(wires=1)
+    qml.Hadamard(wires=1)
+
+    black_boxes_dict[black_box_name]()
+    qml.Hadamard(wires=0)
+
+    return qml.sample(qml.PauliZ([0]))
+
+black_box_name = random_black_box(black_boxes_dict)
+
+result = circuit(black_box_name)
+print(result)
+
+print(black_box_name)
+
+print(circuit.draw())

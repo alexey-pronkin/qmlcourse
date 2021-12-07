@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>О блоке “Линейная алгебра” &#8212; QMLCourse</title>
+    <title>О блоке “Линейная алгебра и NumPy” &#8212; QMLCourse</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -72,10 +74,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="../../_static/logo.svg" class="logo" alt="logo">
       
@@ -134,7 +132,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../pythonblock/jupyter_l3.html">
+  <a class="reference internal" href="../pythonblock/python_l3.html">
    🟦 Ориентация в Jupyter
   </a>
  </li>
@@ -187,12 +185,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="vectors.html">
-   🟦 Вводная лекция про вектора
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="algebra.html">
-   🟦 Алгебра
+   🟦 Векторы
   </a>
  </li>
  <li class="toctree-l1">
@@ -202,7 +195,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="matrices.html">
-   🟦 Mатрицы
+   🟦 Матрицы
   </a>
  </li>
  <li class="toctree-l1">
@@ -249,6 +242,11 @@
    🟩 Квантовые гейты
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcblock/mixedstates.html">
+   🟨 Смешанные состояния
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -262,13 +260,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/progreview.html">
+   🟩 Обзор фреймворков
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/pennylane.html">
    🟩 PennyLane
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../progblock/tfq.html">
-   🟧 Cirq &amp; TFQ
+  <a class="reference internal" href="../progblock/qiskit.html">
+   🟧 Qiskit
   </a>
  </li>
 </ul>
@@ -301,6 +304,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qcalgo/grovers_algorithm.html">
    🟧 Алгоритм Гровера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcalgo/simon_algorithm.html">
+   🟧 Алгоритм Саймона
   </a>
  </li>
 </ul>
@@ -338,8 +346,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qmlkinds.html">
+   🟦 Виды QML
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../qmlkindsblock/hhl_algorithm.html">
    🟥 Алгоритм HHL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qmlkindsblock/qknn.html">
+   🟥 Алгоритм QKNN
   </a>
  </li>
 </ul>
@@ -398,6 +416,11 @@
    🟩 Гибридный SVM
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qsvmblock/classic_svm.html">
+   🟧 Классический SVM
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -408,6 +431,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qnnblock/qnnintro.html">
    ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qnnblock/qnn.html">
+   🟩 Квантовые нейронные сети
   </a>
  </li>
  <li class="toctree-l1">
@@ -423,6 +451,11 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/problemsintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchembasic.html">
    🟩 Квантовая химия (Введение)
   </a>
@@ -430,6 +463,87 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../problemsblock/quantchemadvancedscf.html">
    🟧 Квантовая химия (SCF)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/ising.html">
+   🟩 Модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/advising.html">
+   🟧 Продвинутая модель Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problemsblock/copt.html">
+   🟩 Комбинаторная оптимизация
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  От проблем к обучению
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/problems2qmlintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/np2ising.html">
+   🟩 NP как модели Изинга
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/jordanwigner.html">
+   🟧 Преобразование Жордана-Вигнера
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../problems2qml/eigenvals.html">
+   🟩 О собственных значениях
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  VQE
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqeintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/vqe.html">
+   🟩 Основы VQE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vqeblock/tspvqe.html">
+   🟧 VQE - практика
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  D-Wave – квантовый отжиг и семплирование
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwaveintro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dwaveblock/dwave.html">
+   🟩 Квантовый отжиг и семплирование
   </a>
  </li>
 </ul>
@@ -549,14 +663,25 @@
         
               <div>
                 
-  <div class="section" id="intro">
-<span id="id1"></span><h1>О блоке “Линейная алгебра”<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h1>
-<p>Блок задуман для обсуждения основных понятий и идей линейной алгебры и представляет собой краткое пособие. Данный блок <strong>не является</strong> полноценным учебником по линейной алгебре. Для более детального погружения в тему рекомендуем учебник Тыртышниктова Е. Е. <a class="reference external" href="https://www.inm.ras.ru/wp-content/uploads/library/Monographies/all.pdf">«Матричный анализ и линейная алгебра»</a>.</p>
+  <div class="section" id="numpy">
+<span id="linalg-intro"></span><h1>О блоке “Линейная алгебра и NumPy”<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h1>
+<p>Блок задуман для обсуждения основных понятий и идей линейной алгебры и представляет собой краткое пособие. Данный блок <strong>не является</strong> полноценным учебником по линейной алгебре. Для более детального погружения в тему рекомендуем учебник Тыртышникова Е. Е. <a class="reference external" href="https://www.inm.ras.ru/wp-content/uploads/library/Monographies/all.pdf">«Матричный анализ и линейная алгебра»</a>.</p>
 <p>В рамках блока мы:</p>
 <ul class="simple">
 <li><p>обсудим основные понятия и идеи, такие как <strong>векторы</strong> и <strong>матрицы</strong>;</p></li>
 <li><p>познакомимся с инструментами для работы с векторами и матрицами;</p></li>
 <li><p>попробуем что-нибудь посчитать!</p></li>
+</ul>
+<p>Обозначения:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a\)</span> – число (скаляр);</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{a}\)</span> – вектор;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{A}\)</span> – матрица.</p></li>
+</ul>
+<p>Полезные материалы:</p>
+<ul class="simple">
+<li><p>MathProfi: <a class="reference external" href="http://mathprofi.ru/vektory_dlya_chainikov.html">Аналитическая геометрия</a>.</p></li>
+<li><p>3Blue1Brown: <a class="reference external" href="https://youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">Essence of linear algebra</a>.</p></li>
 </ul>
 </div>
 
@@ -612,7 +737,7 @@
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         
