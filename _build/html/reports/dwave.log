@@ -7,7 +7,7 @@ Traceback (most recent call last):
     return just_run(coro(*args, **kwargs))
   File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/util.py", line 57, in just_run
     return loop.run_until_complete(coro)
-  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
     return future.result()
   File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/client.py", line 558, in async_execute
     await self.async_execute_cell(
@@ -17,20 +17,46 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import dwavebinarycsp
-from dwave.system import DWaveSampler, EmbeddingComposite
-import networkx as nx
-import matplotlib.pyplot as plt
+import os
+
+base_sampler = DWaveSampler(token=os.environ["DWAVE_TOKEN"])
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2202/3559804036.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mimport[0m [0mdwavebinarycsp[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0;32mfrom[0m [0mdwave[0m[0;34m.[0m[0msystem[0m [0;32mimport[0m [0mDWaveSampler[0m[0;34m,[0m [0mEmbeddingComposite[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;32mimport[0m [0mnetworkx[0m [0;32mas[0m [0mnx[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_7294/2314620116.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;32mimport[0m [0mos[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;34m[0m[0m
+[0;32m----> 3[0;31m [0mbase_sampler[0m [0;34m=[0m [0mDWaveSampler[0m[0;34m([0m[0mtoken[0m[0;34m=[0m[0mos[0m[0;34m.[0m[0menviron[0m[0;34m[[0m[0;34m"DWAVE_TOKEN"[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m~/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/dwave/system/samplers/dwave_sampler.py[0m in [0;36m__init__[0;34m(self, failover, retry_interval, **config)[0m
+[1;32m    140[0m         [0mdefaults[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0msolver[0m[0;34m=[0m[0mdict[0m[0;34m([0m[0morder_by[0m[0;34m=[0m[0;34m'-num_active_qubits'[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    141[0m [0;34m[0m[0m
+[0;32m--> 142[0;31m         [0mself[0m[0;34m.[0m[0mclient[0m [0;34m=[0m [0mClient[0m[0;34m.[0m[0mfrom_config[0m[0;34m([0m[0;34m**[0m[0mconfig[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    143[0m         [0mself[0m[0;34m.[0m[0msolver[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mclient[0m[0;34m.[0m[0mget_solver[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    144[0m [0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'dwavebinarycsp'
-ModuleNotFoundError: No module named 'dwavebinarycsp'
+[0;32m~/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/dwave/cloud/client/base.py[0m in [0;36mfrom_config[0;34m(cls, config_file, profile, client, **kwargs)[0m
+[1;32m    358[0m [0;34m[0m[0m
+[1;32m    359[0m         [0mlogger[0m[0;34m.[0m[0mdebug[0m[0;34m([0m[0;34m"Creating %s.Client() with: %r"[0m[0;34m,[0m [0m_client[0m[0;34m,[0m [0mconfig[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 360[0;31m         [0;32mreturn[0m [0m_clients[0m[0;34m[[0m[0m_client[0m[0;34m][0m[0;34m([0m[0;34m**[0m[0mconfig[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    361[0m [0;34m[0m[0m
+[1;32m    362[0m     def _resolve_region_endpoint(self, *,
+
+[0;32m~/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/dwave/cloud/events.py[0m in [0;36mwrapped[0;34m(*pargs, **kwargs)[0m
+[1;32m    103[0m             [0mdispatch_event[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mbefore_eventname[0m[0;34m,[0m [0mobj[0m[0;34m=[0m[0mobj[0m[0;34m,[0m [0margs[0m[0;34m=[0m[0margs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    104[0m             [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 105[0;31m                 [0mrval[0m [0;34m=[0m [0mfn[0m[0;34m([0m[0;34m*[0m[0mpargs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    106[0m             [0;32mexcept[0m [0mException[0m [0;32mas[0m [0mexc[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    107[0m                 [0mdispatch_event[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mafter_eventname[0m[0;34m,[0m [0mobj[0m[0;34m=[0m[0mobj[0m[0;34m,[0m [0margs[0m[0;34m=[0m[0margs[0m[0;34m,[0m [0mexception[0m[0;34m=[0m[0mexc[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/dwave/cloud/client/base.py[0m in [0;36m__init__[0;34m(self, endpoint, token, solver, **kwargs)[0m
+[1;32m    451[0m         [0mtoken[0m [0;34m=[0m [0moptions[0m[0;34m[[0m[0;34m'token'[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m    452[0m         [0;32mif[0m [0;32mnot[0m [0mtoken[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 453[0;31m             [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"API token not defined"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    454[0m [0;34m[0m[0m
+[1;32m    455[0m         [0;31m# parse optional client certificate[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: API token not defined
+ValueError: API token not defined
 
