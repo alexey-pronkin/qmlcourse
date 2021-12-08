@@ -1,0 +1,7 @@
+name: qmlcourse.ai
+channels:
+  - psi4/label/dev
+  - conda-forge
+dependencies:
+  - poetry
+  - psi4
