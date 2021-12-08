@@ -14,8 +14,12 @@ jobs:
 
       - name: get branch name
         uses: nelonoel/branch-name@v1.0.1
-
-      - name: install mamba and poetry
+        
+      - name: Download a requirements.yml artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: requirements-yml-file
+      - name: install mamba
       - uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.9
@@ -23,17 +27,7 @@ jobs:
           channels: conda-forge, defaults
           channel-priority: true
           activate-environment: qmlcourse.ai
-          environment-file: tools/environment.yml
-          
-      # todo: replace with a more sane solution
-      - name: install tensorflow_quantum
-      - shell: bash -l {0}
-        run: |
-          poetry install
-          poetry run pip install -U tensorflow==2.5.1
-          poetry run pip install -U tensorflow_quantum
-          poetry run pip install -U tfq-nightly
-
+          environment-file: environment.yml
 #       - name: add SSH key-file
 #         run: |
 #           mkdir -p /home/runner/.ssh
