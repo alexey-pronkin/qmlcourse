@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/runner/work/qmlcourse/qmlcourse/.venv/lib/python3.8/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+a = np.arange(16).reshape(4, 4)
+print(f"{a = }")
+
+# None добавляет ось размерности 1
+print(f"{a[None].shape = }")
+print(f"{a[:, :, None].shape = }")
+
+# : превращается в slice (None), берет все элементы вдоль размерности
+print(f"{a[2, :] = }")
+print(f"a[2, 0:None] = }")
+
+# ... ellipsis, превращается в необходимое число двоеточий :,:,:
+print(f"{a[...] = }")
+
+# также ... удобен когда мы не знаем настоящий шейп массива или нужно не трогать несколько подряд идущих размерностей
+z = np.arange(27).reshape(3, 3, 3)
+print(f"{z[0, ..., 1] = }, {z[0, :, 1] = }")
+------------------
+
+[0;36m  File [0;32m"/tmp/ipykernel_2269/69581353.py"[0;36m, line [0;32m10[0m
+[0;31m    print(f"a[2, 0:None] = }")[0m
+[0m          ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m f-string: single '}' is not allowed
+
+SyntaxError: f-string: single '}' is not allowed (69581353.py, line 10)
+
