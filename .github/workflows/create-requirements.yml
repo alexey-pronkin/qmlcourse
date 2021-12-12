@@ -13,6 +13,14 @@ jobs:
       TF_CPP_MIN_LOG_LEVEL: 3
 
     steps:
+      - name: checkout branch for build
+        uses: actions/checkout@v2
+
+      - name: checkout branch with cache
+        uses: actions/checkout@v2
+        with:
+          ref: "gh-pages"
+          path: ./gh-pages
       - name: Setup Mambaforge
         uses: conda-incubator/setup-miniconda@v2
         with:
