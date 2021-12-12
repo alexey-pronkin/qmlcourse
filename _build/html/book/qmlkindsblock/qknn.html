@@ -270,6 +270,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/cirq_tfq.html">
+   🟧 Cirq &amp; TFQ
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/qiskit.html">
    🟧 Qiskit
   </a>
@@ -299,6 +304,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qcalgo/quantum_teleportation.html">
    🟩 Квантовая телепортация
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcalgo/superdense_coding.html">
+   🟩 Сверхплотное кодирование
   </a>
  </li>
  <li class="toctree-l1">
@@ -549,6 +559,35 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  QAOA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qaoablock/intro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qaoablock/qaoa.html">
+   🟩 QAOA
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Перспективы
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../perspectives/academic_industrial.html">
+   ⬜ Академия и индустрия
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   О курсе
  </span>
 </p>
@@ -718,7 +757,7 @@
 <p>Самой трудозатратным шагом является вычисление расстояния от тестового образца к каждому тренировочному. Также и в квантовой версии алгоритма.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>На текущий момент разработано несколько разных версий квантового алгоритма поиска ближайших соседей. Есть версия основанная расстоянии Хэмминга <span id="id2">[<a class="reference internal" href="../bibliography.html#id45"><span>LTG21</span></a>]</span>:</p>
+<p>На текущий момент разработано несколько разных версий квантового алгоритма поиска ближайших соседей. Есть версия основанная расстоянии Хэмминга <span id="id2">[<a class="reference internal" href="../bibliography.html#id48"><span>LTG21</span></a>]</span>:</p>
 <p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%A5%D1%8D%D0%BC%D0%BC%D0%B8%D0%BD%D0%B3%D0%B0">Расстояние Хэмминга</a> между векторами <span class="math notranslate nohighlight">\(\vec{x}\)</span> и <span class="math notranslate nohighlight">\(\vec{v_i}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ d_i = |\vec{x} - \vec{v_i}| = \sum_{j=1}^{N} (x_j \oplus v_{ij}) \]</div>
@@ -751,7 +790,7 @@
 <p>Далее мы алгоритм представленный в работе <span id="id4">[<a class="reference internal" href="../bibliography.html#id21"><span>BAG21</span></a>]</span>.</p>
 <div class="figure align-default" id="qknn">
 <a class="reference internal image-reference" href="../../_images/qknn.png"><img alt="../../_images/qknn.png" src="../../_images/qknn.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 97 </span><span class="caption-text">Принципиальная схема QkNN алгоритма. Взято из работы <span id="id5">[<a class="reference internal" href="../bibliography.html#id21"><span>BAG21</span></a>]</span>.</span><a class="headerlink" href="#qknn" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 99 </span><span class="caption-text">Принципиальная схема QkNN алгоритма. Взято из работы <span id="id5">[<a class="reference internal" href="../bibliography.html#id21"><span>BAG21</span></a>]</span>.</span><a class="headerlink" href="#qknn" title="Permalink to this image">¶</a></p>
 </div>
 <p>Квантовый алгоритм поиска <span class="math notranslate nohighlight">\(k\)</span> ближайших соседей будет состоять из двух основных шагов:</p>
 <ol class="simple">
@@ -776,7 +815,7 @@
       \end{split}\]</div>
 <div class="figure align-default" id="qknn-swap-test">
 <a class="reference internal image-reference" href="../../_images/swap_test.png"><img alt="../../_images/swap_test.png" src="../../_images/swap_test.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 98 </span><span class="caption-text">Схема Swap test</span><a class="headerlink" href="#qknn-swap-test" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 100 </span><span class="caption-text">Схема Swap test</span><a class="headerlink" href="#qknn-swap-test" title="Permalink to this image">¶</a></p>
 </div>
 </li>
 <li><p>Выполняется преобразование <span class="math notranslate nohighlight">\(\xi^{dig}|j\rangle|\psi_j\rangle = |j\rangle|F_j\rangle\)</span></p>

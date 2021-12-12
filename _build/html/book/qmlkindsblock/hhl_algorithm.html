@@ -270,6 +270,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../progblock/cirq_tfq.html">
+   🟧 Cirq &amp; TFQ
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../progblock/qiskit.html">
    🟧 Qiskit
   </a>
@@ -299,6 +304,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../qcalgo/quantum_teleportation.html">
    🟩 Квантовая телепортация
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qcalgo/superdense_coding.html">
+   🟩 Сверхплотное кодирование
   </a>
  </li>
  <li class="toctree-l1">
@@ -549,6 +559,35 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  QAOA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qaoablock/intro.html">
+   ⬜ О блоке
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qaoablock/qaoa.html">
+   🟩 QAOA
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Перспективы
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../perspectives/academic_industrial.html">
+   ⬜ Академия и индустрия
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   О курсе
  </span>
 </p>
@@ -689,7 +728,7 @@
   <div class="section" id="hhl">
 <span id="hhl-algorithm"></span><h1>Алгоритм HHL<a class="headerlink" href="#hhl" title="Permalink to this headline">¶</a></h1>
 <p>Сегодня пришла пора поговорить о знаменитом алгоритме Харроу, Хассидима и Ллойда, более известном как HHL-алгоритме, способном решать системы линейных уравнений.</p>
-<p>Очень надеюсь, что к данному занятию у вас уже есть представление об алгоритме фазовой оценки (QPE), использующем обратное квантовое преобразование Фурье, на котором и базируется HHL. Глубокое понимание всех тонкостей этого алгоритма потребует от вас уверенного владения математическим аппаратом. За детальным описанием вы всегда можете обратиться к статьям <span id="id1">[<a class="reference internal" href="../bibliography.html#id28"><span>DHM+18</span></a>]</span>, <span id="id2">[<a class="reference internal" href="../bibliography.html#id7"><span>HHL09</span></a>]</span>, и <span id="id3">[<a class="reference internal" href="../bibliography.html#id38"><span>HZL+17</span></a>]</span>. Приготовьтесь потратить время и умственные ресурсы, если алгоритм вас зацепит и вы решите в нем как следует покопаться. Мы же поможем вам заинтересоваться, рассмотрим основные принципы и небольшой пример.</p>
+<p>Очень надеюсь, что к данному занятию у вас уже есть представление об алгоритме фазовой оценки (QPE), использующем обратное квантовое преобразование Фурье, на котором и базируется HHL. Глубокое понимание всех тонкостей этого алгоритма потребует от вас уверенного владения математическим аппаратом. За детальным описанием вы всегда можете обратиться к статьям <span id="id1">[<a class="reference internal" href="../bibliography.html#id28"><span>DHM+18</span></a>]</span>, <span id="id2">[<a class="reference internal" href="../bibliography.html#id7"><span>HHL09</span></a>]</span>, и <span id="id3">[<a class="reference internal" href="../bibliography.html#id40"><span>HZL+17</span></a>]</span>. Приготовьтесь потратить время и умственные ресурсы, если алгоритм вас зацепит и вы решите в нем как следует покопаться. Мы же поможем вам заинтересоваться, рассмотрим основные принципы и небольшой пример.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Именно HHL-алгоритм произвел настоящую революцию в области квантового машинного обучения. Ведь решение систем линейных уравнений так или иначе находится “под капотом” почти любого известного алгоритма машинного обучения. И действительно:</p>
@@ -703,7 +742,7 @@
 </div>
 <div class="figure align-default" id="lloyd">
 <a class="reference internal image-reference" href="../../_images/614px-Seth_Lloyd.jpg"><img alt="../../_images/614px-Seth_Lloyd.jpg" src="../../_images/614px-Seth_Lloyd.jpg" style="width: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 94 </span><span class="caption-text">Сет Ллойд, профессор MIT и один из создателей HHL-алгоритма</span><a class="headerlink" href="#lloyd" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 96 </span><span class="caption-text">Сет Ллойд, профессор MIT и один из создателей HHL-алгоритма</span><a class="headerlink" href="#lloyd" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="id4">
 <h2>Задача<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
@@ -741,7 +780,7 @@ a_{21} x_{1}+a_{22} x_{2} = b_{2}
 <p>Оказывается, что и это все можно провернуть с помощью известных квантовых преобразований. Принципиальный вид нашей схемы представлен следующим образом:</p>
 <div class="figure align-default" id="hhl-curcuit">
 <a class="reference internal image-reference" href="../../_images/hhl_circuit.svg"><img alt="../../_images/hhl_circuit.svg" src="../../_images/hhl_circuit.svg" width="800px" /></a>
-<p class="caption"><span class="caption-number">Fig. 95 </span><span class="caption-text">Квантовая схема, реализующая алгоритм HHL</span><a class="headerlink" href="#hhl-curcuit" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 97 </span><span class="caption-text">Квантовая схема, реализующая алгоритм HHL</span><a class="headerlink" href="#hhl-curcuit" title="Permalink to this image">¶</a></p>
 </div>
 <p>В нижний регистр загружается вектор <span class="math notranslate nohighlight">\(|b\rangle\)</span>, средний и нижний регистры участвуют в фазовой оценке, а верхний дополнительный кубит нужен для так называемого вращения, обусловленного собственными значениями. Давайте разбираться.</p>
 </div>
@@ -826,7 +865,7 @@ e^{2\pi i \psi} = e^{i \lambda_j t}
 <p>Принципиальная схема QPE выглядит следующим образом:</p>
 <div class="figure align-default" id="hhl-curcuit2">
 <a class="reference internal image-reference" href="../../_images/hhl_circuit2.svg"><img alt="../../_images/hhl_circuit2.svg" src="../../_images/hhl_circuit2.svg" width="800px" /></a>
-<p class="caption"><span class="caption-number">Fig. 96 </span><span class="caption-text">Схема алгоритма QPE</span><a class="headerlink" href="#hhl-curcuit2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 98 </span><span class="caption-text">Схема алгоритма QPE</span><a class="headerlink" href="#hhl-curcuit2" title="Permalink to this image">¶</a></p>
 </div>
 <p>Итак, мы подготовились, вспомнили много хорошего, теперь пошагово распишем наш алгоритм.</p>
 <p>Стартуем мы со следующим состоянием:</p>
