@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  deploy_book:
+  create_requirements:
     runs-on: ubuntu-latest
     env:
       TF_CPP_MIN_LOG_LEVEL: 3
@@ -32,16 +32,15 @@ jobs:
           use-mamba: true
       - name: install the main dependencies
         run: |
-          poetry install
+          conda run -n qmlcourse.ai poetry install
 
       # todo: replace with a more sane solution
       - name: install tensorflow_quantum # https://www.tensorflow.org/quantum/install
         run: |
-          poetry run pip install --upgrade pip
-
-          poetry run pip install -U tensorflow==2.5.1
-          poetry run pip install -U tensorflow_quantum
-          poetry run pip install -U tfq-nightly
+          conda run -n qmlcourse.ai pip install --upgrade pip
+          conda run -n qmlcourse.ai pip install -U tensorflow==2.5.1
+          conda run -n qmlcourse.ai pip install -U tensorflow_quantum
+          conda run -n qmlcourse.ai pip install -U tfq-nightly
 
       - name: create requirements.yml
         run: conda env export > environment.yml
