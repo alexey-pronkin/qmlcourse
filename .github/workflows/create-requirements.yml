@@ -43,7 +43,7 @@ jobs:
           conda run -n qmlcourse.ai pip install -U tfq-nightly
 
       - name: create requirements.yml
-        run: conda env export > environment.yml
+        run: conda run -n qmlcourse.ai conda env export > environment.yml
       - name: Upload output file
         uses: actions/upload-artifact@v2
         with:
