@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_CPP_MIN_LOG_LEVEL: 3
-    
+      
     steps:
       - name: checkout branch for build
         uses: actions/checkout@v2
