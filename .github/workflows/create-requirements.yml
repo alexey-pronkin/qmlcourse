@@ -1,5 +1,6 @@
 name: create-requirements
-
+# This action creates different anaconda env requirements.yml files for continious intergation and docker needs.
+# action starts in deploy-book, deploy-branch, test-docker workflows
 on:
   workflow_dispatch:
   push:
@@ -10,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_CPP_MIN_LOG_LEVEL: 3
-      
+
     steps:
       - name: checkout branch for build
         uses: actions/checkout@v2
@@ -53,19 +54,18 @@ jobs:
           path: environment.yml
 
       - name: change file name requirements.yml to requirements-linux.yml
-      id: add_suffix_linux
-      run: |
-        mv requirements.yml requirements-linux.yml
-
+        id: add_suffix_linux
+        run: |
+          mv requirements.yml requirements-linux.yml
       - name: commit new requirements.yml
-      id: commit
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "github-actions"
-        git add environment.yml
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add environment.yml
 
-    - name: push changes
-      if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
