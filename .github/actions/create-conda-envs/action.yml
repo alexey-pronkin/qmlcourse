@@ -1,5 +1,5 @@
 name: create-requirements
-# This action creates different anaconda env requirements.yml files for continious intergation and docker needs.
+# This action creates anaconda env requirements.yml and environment-yml artifact  files for continious intergation and docker needs.
 # action starts in deploy-book, deploy-branch, test-docker workflows
 on:
   workflow_dispatch:

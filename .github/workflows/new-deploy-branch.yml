@@ -26,7 +26,7 @@ jobs:
 
       - name: create or change environment-yml and requirements-*.ymls
         if: steps.changed_files.outputs.files_changed == 'true'
-        uses: actions/create-conda-envs
+        uses: ./.github/actions/create-conda-envs@v1
 
       - name: download a requirements.yml artifact
         uses: actions/download-artifact@v2
