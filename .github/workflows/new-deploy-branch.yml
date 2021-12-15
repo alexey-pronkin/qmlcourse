@@ -1,4 +1,4 @@
-name: new-deploy-branch
+name: deploy-branch
 
 on:
   workflow_dispatch:
@@ -7,6 +7,7 @@ jobs:
 
   new-deploy-branch:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: checkout code
@@ -14,15 +15,15 @@ jobs:
 
       - name: get branch name
         uses: nelonoel/branch-name@v1.0.1
-        
+
       - name: Download a requirements.yml artifact
         uses: actions/download-artifact@v2
         with:
           name: environment-yml
       - name: install mamba
-      - uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.9
+          python-version: 3.8
           mamba-version: "*"
           channels: conda-forge, defaults
           channel-priority: true
@@ -34,10 +35,10 @@ jobs:
 #           echo "${{ secrets.AWS_SSH_KEY }}" > /home/runner/.ssh/key.pem
 #           chmod 600 /home/runner/.ssh/key.pem
 
-#       - name: build the book
-#         run: |
-#           export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
-#           poetry run jupyter-book build ./qmlcourseRU
+      - name: build the book
+        run: |
+#         export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
+          poetry run jupyter-book build ./qmlcourseRU
 
 #       - name: deploy
 #         run: |
