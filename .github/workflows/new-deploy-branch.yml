@@ -16,10 +16,23 @@ jobs:
       - name: get branch name
         uses: nelonoel/branch-name@v1.0.1
 
-      - name: Download a requirements.yml artifact
+      - name: check locking files
+        uses: tj-actions/verify-changed-files@v5.5
+        id: changed_files
+        with:
+          files: |
+             poetry.lock
+             pyproject.toml
+
+      - name: create or change environment-yml and requirements-*.ymls
+        if: steps.changed_files.outputs.files_changed == 'true'
+        uses: actions/create-requirements
+
+      - name: download a requirements.yml artifact
         uses: actions/download-artifact@v2
         with:
           name: environment-yml
+
       - name: install mamba
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -29,17 +42,19 @@ jobs:
           channel-priority: true
           activate-environment: qmlcourse.ai
           environment-file: environment.yml
+
 #       - name: add SSH key-file
 #         run: |
 #           mkdir -p /home/runner/.ssh
 #           echo "${{ secrets.AWS_SSH_KEY }}" > /home/runner/.ssh/key.pem
 #           chmod 600 /home/runner/.ssh/key.pem
+
       - name: build the book
         run: |
-          poetry run jupyter-book build ./qmlcourseRU
-#         export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
-# 
-# 
+          # export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
+          conda run -n qmlcourse.ai jupyter-book build ./qmlcourseRU
+        shell: bash
+
 #       - name: deploy
 #         run: |
 #           export CURRENT_BRANCH="${BRANCH_NAME}"
@@ -47,5 +62,5 @@ jobs:
 #           export AWS_HOST="54.89.156.216"
 #           export AWS_USER="ubuntu"
 #           export SSH_KEY="/home/runner/.ssh/key.pem"
-
-#           poetry run python ./tools/deploy2aws.py ./
+#
+#           conda run -n qmlcourse.ai python ./tools/deploy2aws.py ./
