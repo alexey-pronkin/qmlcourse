@@ -50,19 +50,19 @@ jobs:
       - name: Upload output file
         uses: actions/upload-artifact@v2
         with:
-          name: environment-yml-file
+          name: environment-yml
           path: environment.yml
 
       - name: change file name requirements.yml to requirements-linux.yml
         id: add_suffix_linux
         run: |
-          mv requirements.yml requirements-linux.yml
+          mv environment.yml requirements-linux.yml
       - name: commit new requirements.yml
         id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git add environment.yml
+          git add requirements-linux.yml
 
       - name: push changes
         if: steps.commit.outputs.push == 'true'
