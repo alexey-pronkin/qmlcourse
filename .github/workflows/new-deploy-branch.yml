@@ -34,12 +34,12 @@ jobs:
 #           mkdir -p /home/runner/.ssh
 #           echo "${{ secrets.AWS_SSH_KEY }}" > /home/runner/.ssh/key.pem
 #           chmod 600 /home/runner/.ssh/key.pem
-
       - name: build the book
         run: |
-#         export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
           poetry run jupyter-book build ./qmlcourseRU
-
+#         export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
+# 
+# 
 #       - name: deploy
 #         run: |
 #           export CURRENT_BRANCH="${BRANCH_NAME}"
