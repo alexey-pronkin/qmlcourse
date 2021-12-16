@@ -69,7 +69,7 @@ jobs:
           use-mamba: true
           python-version: 3.8
           channels: psi4/label/dev, conda-forge, defaults
-          channel-priority: strict
+          channel-priority: true
           use-only-tar-bz2: true
 
       # - name: copy cache dir for dependecies

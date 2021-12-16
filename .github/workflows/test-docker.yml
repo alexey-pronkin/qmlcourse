@@ -1,9 +1,24 @@
 # This is todo file for another pull request, not done yet, just for conviniece merging
+name: test-docker
 on:
   workflow_dispatch:
 jobs:
   todo:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            label: linux-64
+            prefix: /usr/share/miniconda3/envs/qmlcourse.ai
+
+          - os: macos-latest
+            label: osx-64
+            prefix: /Users/runner/miniconda3/envs/qmlcourse.ai
+
+          - os: windows-latest
+            label: win-64
+            prefix: C:\Miniconda3\envs\qmlcourse.ai
     steps:
       - name: todo1
         run: echo "todo"
