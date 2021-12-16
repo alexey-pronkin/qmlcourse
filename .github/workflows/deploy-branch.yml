@@ -90,6 +90,7 @@ jobs:
       - name: missing cache
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
+          ls .
           mamba env remove --name qmlcourse.ai
           mamba create --name qmlcourse.ai -f environment.yml
 
