@@ -58,10 +58,16 @@ jobs:
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: ./.github/workflows/create-requirements.yml
 
+        # If files is changed
       - name: download a new requirements.yml artifact
+        if: steps.changed_files.outputs.files_changed == 'true'
         uses: actions/download-artifact@v2
         with:
           name: environment-yml
+        # Else - use from checkout
+      - name: copy requirements-linux.yml to environment.yml
+        if: steps.changed_files.outputs.files_changed == 'true'
+        run: cp requirements-linux.yml environment.yml
 
       - name: install mamba
         uses: conda-incubator/setup-miniconda@v2
