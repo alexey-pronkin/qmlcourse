@@ -56,7 +56,7 @@ jobs:
 
       - name: create or change environment-yml and requirements-*.ymls
         if: steps.changed_files.outputs.files_changed == 'true'
-        uses: ./.github/actions/create-requirements@v1
+        uses: ./.github/workflows/create-requirements.yml
 
       - name: download a new requirements.yml artifact
         uses: actions/download-artifact@v2
