@@ -53,6 +53,13 @@ jobs:
         if: steps.changed_files.outputs.files_changed == 'false'
         run: cp requirements-linux.yml environment.yml
 
+      # Use cache
+      - uses: actions/cache@v2
+        with:
+          path: ${{ matrix.prefix }}
+          key: ${{ matrix.label }}-conda-${{ hashFiles('environment.yml') }}
+        id: mamba-cache
+
       - name: install mamba
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -73,16 +80,11 @@ jobs:
       #     path: .venv
       #     key: venv2-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-      # Use cache
-      - uses: actions/cache@v2
-        with:
-          path: ${{ matrix.prefix }}
-          key: ${{ matrix.label }}-conda-${{ hashFiles('environment.yml') }}
-        id: mamba-cache
+
 
       # Update environment if cache does not exist
       - name: Update environment
-        run: mamba env update -n anaconda-client-env -f etc/example-environment-caching.yml
+        run: mamba env update -n qmlcourse.ai -f environment.yml
         if: steps.cache.outputs.cache-hit != 'true'
 
 #       - name: add SSH key-file

@@ -115,10 +115,23 @@ jobs:
           key: ${{ matrix.label }}-conda-${{ hashFiles('environment.yml') }}
         id: mamba-cache
 
-      # Update environment if cache does not exist
-      - name: Update environment
-        run: mamba env update -n qmlcourse.ai -f environment.yml
+      # # Update environment if cache does not exist
+      # - name: Update environment
+      #   run: mamba env update -n qmlcourse.ai -f environment.yml
+      #   if: steps.cache.outputs.cache-hit != 'true'
+      - name: install mamba with all packages if we miss the cache
+        uses: conda-incubator/setup-miniconda@v2
         if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+          activate-environment: qmlcourse.ai
+          use-mamba: true
+          python-version: 3.8
+          channels: psi4/label/dev, conda-forge, defaults
+          channel-priority: true
+          use-only-tar-bz2: true
+          environment-file: environment.yml
 
       - name: build the book
         run: |
