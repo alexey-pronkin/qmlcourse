@@ -65,9 +65,9 @@ jobs:
         with:
           name: environment-yml
         # Else - use from checkout
-      - name: copy requirements-linux.yml to environment.yml
+      - name: copy requirements-ubuntu.yml to environment.yml
         if: steps.changed_files.outputs.files_changed == 'false'
-        run: cp requirements-linux.yml environment.yml
+        run: cp requirements-ubuntu.yml environment.yml
 
       # - name: Cache conda
       #   uses: actions/cache@v2

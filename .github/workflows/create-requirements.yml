@@ -30,7 +30,7 @@ jobs:
           channels: psi4/label/dev, conda-forge, defaults
           environment-file: tools/environment.yml
           use-mamba: true
-          channel-priority: strict
+          channel-priority: true
           use-only-tar-bz2: true
 
       - name: install the main dependencies
@@ -54,7 +54,7 @@ jobs:
           name: environment-yml
           path: environment.yml
 
-      - name: change file name requirements.yml to requirements-linux.yml
+      - name: change file name requirements.yml to requirements-ubuntu.yml
         id: add_suffix_linux
         run: |
           mv environment.yml requirements-linux.yml
@@ -63,7 +63,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git add requirements-linux.yml
+          git add requirements-ubuntu.yml
 
       - name: push changes
         if: steps.commit.outputs.push == 'true'
