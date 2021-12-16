@@ -57,7 +57,7 @@ jobs:
       - name: change file name requirements.yml to requirements-ubuntu.yml
         id: add_suffix_linux
         run: |
-          mv environment.yml requirements-linux.yml
+          mv environment.yml requirements-ubuntu.yml
       - name: commit new requirements.yml
         id: commit
         run: |
