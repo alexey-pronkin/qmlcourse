@@ -1,3 +1,11 @@
 # This is todo file for another pull request, not done yet, just for conviniece merging
 on:
   workflow_dispatch:
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: todo1
+        run: echo "todo"
+      - name: todo2
+        run: echo "todo"

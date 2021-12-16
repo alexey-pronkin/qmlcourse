@@ -69,6 +69,25 @@ jobs:
         if: steps.changed_files.outputs.files_changed == 'true'
         run: cp requirements-linux.yml environment.yml
 
+      # - name: Cache conda
+      #   uses: actions/cache@v2
+      #   env:
+      #     # Increase this value to reset cache if environment.yml has not changed
+      #     CACHE_NUMBER: 0
+      #   with:
+      #     path: ~/conda_pkgs_dir
+      #     key:
+      #       ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+      #       hashFiles('environment.yml') }}
+      # - name: install mamba
+      # - uses: conda-incubator/setup-miniconda@v2
+      #   with:
+      #     activate-environment: qmlcourse.ai
+      #     channels: psi4/label/dev, conda-forge, defaults
+      #     channel-priority: strict
+      #     environment-file: environment.yml
+      #     use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+
       - name: install mamba
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -79,6 +98,7 @@ jobs:
           python-version: 3.8
           channels: psi4/label/dev, conda-forge, defaults
           channel-priority: true
+          use-only-tar-bz2: true
 
       # - name: copy cache dir for dependecies
       #   uses: actions/cache@v2
