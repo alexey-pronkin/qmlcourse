@@ -1,13 +1,13 @@
 name: test-psi4-setup
 
-# Only run this when the master branch changes
+# Only when course is staring or when we add new packages manually
 on:
   workflow_dispatch:
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
 
-  deploy-book:
+  deploy-os:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

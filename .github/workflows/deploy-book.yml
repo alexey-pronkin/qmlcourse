@@ -4,16 +4,30 @@ on:
   workflow_dispatch:
     inputs:
       DisableCache:
-        description: 'disable cache'
+        description: 'Disable cache'
         required: false
         default: 'false'
-  # push:
-  #   branches: [ master ]
+  push:
+    branches: [ master ]
 
 jobs:
 
   deploy_book:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            label: linux-64
+            prefix: /usr/share/miniconda3/envs/qmlcourse.ai
+
+          # - os: macos-latest
+          #   label: osx-64
+          #   prefix: /Users/runner/miniconda3/envs/qmlcourse.ai
+
+          # - os: windows-latest
+          #   label: win-64
+          #   prefix: C:\Miniconda3\envs\qmlcourse.ai
     env:
       TF_CPP_MIN_LOG_LEVEL: 3
 
@@ -32,24 +46,32 @@ jobs:
         run: |
           cp -r ./gh-pages/_build/ ./qmlcourseRU/ || exit 0
 
-      - name: set up Python 3.8
-        uses: actions/setup-python@v2.2.2
+      - name: check locking files
+        uses: tj-actions/verify-changed-files@v5.5
+        id: changed_files
+        with:
+          files: |
+             poetry.lock
+             pyproject.toml
+
+      - name: create or change environment-yml and requirements-*.ymls
+        if: steps.changed_files.outputs.files_changed == 'true'
+        uses: ./.github/actions/create-requirements@v1
+
+      - name: download a new requirements.yml artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: environment-yml
+
+      - name: install mamba
+        uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.8
-
-      - name: set up conda
-        uses: s-weigand/setup-conda@v1
-        with:
-          update-conda: true
-          python-version: 3.8
-          conda-channels: anaconda, conda-forge, psi4
-          activate-conda: true
-
-      - name: set up poetry
-        uses: snok/install-poetry@v1.1.6
-        with:
-          virtualenvs-create: false
-          virtualenvs-in-project: true
+          mamba-version: "*"
+          channels: conda-forge, defaults
+          channel-priority: true
+          activate-environment: qmlcourse.ai
+          environment-file: environment.yml
 
       # - name: copy cache dir for dependecies
       #   uses: actions/cache@v2
@@ -59,21 +81,12 @@ jobs:
       #     path: .venv
       #     key: venv2-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: install the main dependencies
-        run: |
-          conda create python=3.8 -p .venv -y
-          conda install psi4 -c psi4 -p .venv -y
-
-          poetry install
-
-      # todo: replace with a more sane solution
-      - name: install tensorflow_quantum # https://www.tensorflow.org/quantum/install
-        run: |
-          poetry run pip install --upgrade pip
-
-          poetry run pip install -U tensorflow==2.5.1
-          poetry run pip install -U tensorflow_quantum
-          poetry run pip install -U tfq-nightly
+      # Use cache
+      - uses: actions/cache@v2
+        with:
+          path: ${{ matrix.prefix }}
+          key: ${{ matrix.label }}-conda-${{ hashFiles('environment.yml') }}
+        id: mamba-cache
 
       - name: build the book
         run: |
@@ -96,15 +109,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./qmlcourseRU/_build/html/
           publish_branch: pages-gh
-
-#       - name: Build PDF file
-#         run: |
-#           poetry run jupyter-book build ./qmlcourseRU --builder pdfhtml
-#           mv ./qmlcourseRU/_build/pdf/book.pdf ./qmlcourseRU/_build/pdf/all_book.pdf
-
-#       - name: Deploy only pdf files
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./qmlcourseRU/_build/pdf/
-#           destination_dir: pdf
