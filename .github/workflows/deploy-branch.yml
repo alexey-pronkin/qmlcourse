@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   deploy-branch:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -12,15 +11,15 @@ jobs:
         include:
           - os: ubuntu-latest
             label: linux-64
-            prefix: /usr/share/miniconda3/envs/qmlcourse.ai
+            prefix: /usr/share/miniconda3/envs/qml-dev
 
           # - os: macos-latest
           #   label: osx-64
-          #   prefix: /Users/runner/miniconda3/envs/qmlcourse.ai
+          #   prefix: /Users/runner/miniconda3/envs/qml-dev
 
           # - os: windows-latest
           #   label: win-64
-          #   prefix: C:\Miniconda3\envs\qmlcourse.ai
+          #   prefix: C:\Miniconda3\envs\qml-dev
     timeout-minutes: 15
 
     steps:
@@ -35,19 +34,18 @@ jobs:
         id: changed_files
         with:
           files: |
-             poetry.lock
-             pyproject.toml
+            poetry.lock
+            pyproject.toml
 
       - name: create or change environment-yml and requirements-*.ymls
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: ./.github/workflows/create-requirements.yml
 
         # If files is changed
-      - name: download a new requirements.yml artifact
+      - name: Pull new requirements file if environment is changed
         if: steps.changed_files.outputs.files_changed == 'true'
-        uses: actions/download-artifact@v2
-        with:
-          name: environment-yml
+        run: git pull && cp requirements-ubuntu.yml environment.yml
+
         # Else - use from checkout
       - name: copy requirements-ubuntu.yml to environment.yml
         if: steps.changed_files.outputs.files_changed == 'false'
@@ -65,7 +63,7 @@ jobs:
         with:
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          activate-environment: qmlcourse.ai
+          activate-environment: qml-dev
           use-mamba: true
           python-version: 3.8
           channels: psi4/label/dev, conda-forge, defaults
@@ -81,17 +79,17 @@ jobs:
       #     path: .venv
       #     key: venv2-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-# # Update environment if cache does not exist
+      # # Update environment if cache does not exist
       # - name: Update environment
-      #   run: mamba env update -n qmlcourse.ai -f environment.yml
+      #   run: mamba env update -n qml-dev -f environment.yml
       #   if: steps.cache.outputs.cache-hit != 'true'
 
-      # remove qmlcourse.ai env and create the new one from file if we miss the cache
+      # remove qml-dev env and create the new one from file if we miss the cache
       - name: missing cache
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          mamba env remove --name qmlcourse.ai
-          mamba create --name qmlcourse.ai -f environment.yml
+          mamba env remove --name qml-dev
+          mamba create --name qml-dev -f environment.yml
 
       # - name: install mamba with all packages if we miss the cache
       #   uses: conda-incubator/setup-miniconda@v2
@@ -99,7 +97,7 @@ jobs:
       #   with:
       #     miniforge-variant: Mambaforge
       #     miniforge-version: latest
-      #     activate-environment: qmlcourse.ai
+      #     activate-environment: qml-dev
       #     use-mamba: true
       #     python-version: 3.8
       #     channels: psi4/label/dev, conda-forge, defaults
@@ -107,18 +105,17 @@ jobs:
       #     use-only-tar-bz2: true
       #     environment-file: environment.yml
 
-#       - name: add SSH key-file
-#         run: |
-#           mkdir -p /home/runner/.ssh
-#           echo "${{ secrets.AWS_SSH_KEY }}" > /home/runner/.ssh/key.pem
-#           chmod 600 /home/runner/.ssh/key.pem
+      #       - name: add SSH key-file
+      #         run: |
+      #           mkdir -p /home/runner/.ssh
+      #           echo "${{ secrets.AWS_SSH_KEY }}" > /home/runner/.ssh/key.pem
+      #           chmod 600 /home/runner/.ssh/key.pem
 
       - name: build the book
         run: |
           # export DWAVE_TOKEN="${{ secrets.DWAVE_TOKEN }}"
-          conda run -n qmlcourse.ai jupyter-book build ./qmlcourseRU
+          conda run -n qml-dev jupyter-book build ./qmlcourseRU
         shell: bash
-
 #       - name: deploy
 #         run: |
 #           export CURRENT_BRANCH="${BRANCH_NAME}"
@@ -127,4 +124,4 @@ jobs:
 #           export AWS_USER="ubuntu"
 #           export SSH_KEY="/home/runner/.ssh/key.pem"
 #
-#           conda run -n qmlcourse.ai python ./tools/deploy2aws.py ./
+#           conda run -n qml-dev python ./tools/deploy2aws.py ./

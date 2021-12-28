@@ -26,7 +26,7 @@ jobs:
           python-version: 3.8
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          activate-environment: qmlcourse.ai
+          activate-environment: qml-dev
           channels: psi4/label/dev, conda-forge, defaults
           environment-file: tools/environment.yml
           use-mamba: true
@@ -35,24 +35,25 @@ jobs:
 
       - name: install the main dependencies
         run: |
-          conda run -n qmlcourse.ai poetry install
+          conda run -n qml-dev poetry install
 
       # todo: replace with a more sane solution
       - name: install tensorflow_quantum # https://www.tensorflow.org/quantum/install
         run: |
-          conda run -n qmlcourse.ai pip install --upgrade pip
-          conda run -n qmlcourse.ai pip install -U tensorflow==2.5.1
-          conda run -n qmlcourse.ai pip install -U tensorflow_quantum
-          conda run -n qmlcourse.ai pip install -U tfq-nightly
+          conda run -n qml-dev pip install --upgrade pip
+          conda run -n qml-dev pip install -U tensorflow==2.5.1
+          conda run -n qml-dev pip install -U tensorflow_quantum
+          conda run -n qml-dev pip install -U tfq-nightly
 
       - name: create requirements.yml
-        run: conda run -n qmlcourse.ai conda env export > environment.yml
+        run: conda run -n qml-dev conda env export > environment.yml
 
-      - name: Upload output file
-        uses: actions/upload-artifact@v2
-        with:
-          name: environment-yml
-          path: environment.yml
+      # Not working in other workflows, todo
+      # - name: Upload output file
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: environment-yml
+      #     path: environment.yml
 
       - name: change file name requirements.yml to requirements-ubuntu.yml
         id: add_suffix_linux
