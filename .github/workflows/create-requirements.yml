@@ -54,17 +54,24 @@ jobs:
       #   with:
       #     name: environment-yml
       #     path: environment.yml
-
-      - name: change file name requirements.yml to requirements-ubuntu.yml
-        id: add_suffix_linux
+      - name: change environment.yml to requirements-suffix.yml
+        id: requirements-suffix
         run: |
-          mv environment.yml requirements-ubuntu.yml
+          mv environment.yml requirements-linux.yml
+
       - name: commit new requirements.yml
         id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git add requirements-ubuntu.yml
+          git add requirements-linux.yml
+          if [-z "$(git status --porcelain)"]; then
+           echo "::set-output name=push::false"
+          else
+           git commit -m "Add changes" -a
+           echo "::set-output name=push::true"
+          fi
+        shell: bash
 
       - name: push changes
         if: steps.commit.outputs.push == 'true'
