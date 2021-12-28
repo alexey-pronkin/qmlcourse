@@ -88,15 +88,13 @@ jobs:
       - name: install mamba
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.9
+          python-version: 3.8
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          activate-environment: qml-dev
           use-mamba: true
-          python-version: 3.8
+          activate-environment: qml-dev
           channels: psi4/label/dev, conda-forge, defaults
           environment-file: environment.yml
-          use-mamba: true
           channel-priority: true
           use-only-tar-bz2: true
 
