@@ -61,11 +61,11 @@ jobs:
         # If files is changed do git pull
       - name: download a new requirements.yml
         if: steps.changed_files.outputs.files_changed == 'true'
-        run: git pull && cp requirements-ubuntu.yml environment.yml
+        run: git pull && cp requirements-linux.yml environment.yml
         # Else - use from old checkout
       - name: copy requirements-ubuntu.yml to environment.yml
         if: steps.changed_files.outputs.files_changed == 'false'
-        run: cp requirements-ubuntu.yml environment.yml
+        run: cp requirements-linux.yml environment.yml
 
       # - name: Cache conda
       #   uses: actions/cache@v2
