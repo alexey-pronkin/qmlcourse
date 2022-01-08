@@ -56,7 +56,7 @@ jobs:
       - name: change environment.yml to requirements-suffix.yml
         id: requirements-suffix
         run: |
-          mv environment.yml requirements-linux.yml
+          mv environment.yml tools/requirements/requirements-linux.yml
 
       - name: commit new requirements.yml
         id: commit
