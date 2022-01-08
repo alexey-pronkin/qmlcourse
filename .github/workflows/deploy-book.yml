@@ -61,11 +61,11 @@ jobs:
         # If files is changed do git pull
       - name: download a new requirements.yml
         if: steps.changed_files.outputs.files_changed == 'true'
-        run: git pull && cp requirements-linux.yml environment.yml
+        run: git pull && cp ./tools/requirements/requirements-linux.yml environment.yml
         # Else - use from old checkout
-      - name: copy requirements-ubuntu.yml to environment.yml
+      - name: copy requirements-linux.yml to environment.yml
         if: steps.changed_files.outputs.files_changed == 'false'
-        run: cp requirements-linux.yml environment.yml
+        run: cp ./tools/requirements/requirements-linux.yml environment.yml
 
       # - name: Cache conda
       #   uses: actions/cache@v2
@@ -88,12 +88,11 @@ jobs:
       - name: install mamba
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
           miniforge-variant: Mambaforge
           miniforge-version: latest
           use-mamba: true
           activate-environment: qml-dev
-          channels: psi4/label/dev, conda-forge, defaults
           environment-file: environment.yml
           channel-priority: true
           use-only-tar-bz2: true
