@@ -44,12 +44,12 @@ jobs:
         # If files is changed
       - name: Pull new requirements file if environment is changed
         if: steps.changed_files.outputs.files_changed == 'true'
-        run: git pull && cp requirements-ubuntu.yml environment.yml
+        run: git pull && cp ./tools/requirements/requirements-linux.yml environment.yml
 
         # Else - use from checkout
-      - name: copy requirements-ubuntu.yml to environment.yml
+      - name: copy requirements-linux.yml to environment.yml
         if: steps.changed_files.outputs.files_changed == 'false'
-        run: cp requirements-ubuntu.yml environment.yml
+        run: cp ./tools/requirements/requirements-linux.yml environment.yml
 
       # Use cache
       - uses: actions/cache@v2
@@ -65,9 +65,8 @@ jobs:
           miniforge-version: latest
           activate-environment: qml-dev
           use-mamba: true
-          python-version: 3.8
-          channels: psi4/label/dev, conda-forge, defaults
-          environment-file: tools/environment.yml
+          python-version: 3.9
+          environment-file: environment.yml
           channel-priority: true
           use-only-tar-bz2: true
 

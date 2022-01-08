@@ -23,7 +23,7 @@ jobs:
       - name: Setup Mambaforge
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
           miniforge-variant: Mambaforge
           miniforge-version: latest
           activate-environment: qml-dev
@@ -41,8 +41,7 @@ jobs:
       - name: install tensorflow_quantum # https://www.tensorflow.org/quantum/install
         run: |
           conda run -n qml-dev pip install --upgrade pip
-          conda run -n qml-dev pip install -U tensorflow==2.5.1
-          conda run -n qml-dev pip install -U tensorflow_quantum
+          conda run -n qml-dev pip install -U tensorflow tensorflow_quantum
           conda run -n qml-dev pip install -U tfq-nightly
 
       - name: create requirements.yml
