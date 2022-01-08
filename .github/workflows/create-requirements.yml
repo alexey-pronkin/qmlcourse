@@ -29,7 +29,7 @@ jobs:
           activate-environment: qml-dev
           use-mamba: true
           channels: psi4/label/dev, conda-forge, defaults
-          environment-file: tools/environment.yml
+          environment-file: tools/requirements/base-environment.yml
           channel-priority: true
           use-only-tar-bz2: true
 
