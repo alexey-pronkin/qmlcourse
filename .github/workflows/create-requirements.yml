@@ -56,14 +56,15 @@ jobs:
       - name: change environment.yml to requirements-suffix.yml
         id: requirements-suffix
         run: |
-          mv environment.yml tools/requirements/requirements-linux.yml
+          cp -f environment.yml tools/requirements/requirements-linux.yml
 
       - name: commit new requirements.yml
         id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git add requirements-linux.yml
+          git add environment.yml
+          git add tools/requirements/requirements-linux.yml
           if [-z "$(git status --porcelain)"]; then
            echo "::set-output name=push::false"
           else
